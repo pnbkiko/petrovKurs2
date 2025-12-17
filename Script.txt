@@ -1,0 +1,106 @@
+CREATE TABLE machines (
+    id SERIAL PRIMARY KEY,
+    model TEXT NOT NULL,
+    inv_number TEXT NOT NULL UNIQUE,
+    commissioned_at DATE NOT NULL
+);
+
+-- Таблица видов технического обслуживания
+CREATE TABLE maintenance_types (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    interval_days INTEGER NOT NULL
+);
+
+-- Таблица графика ТО
+CREATE TABLE maintenance_schedule (
+    machine_id INTEGER NOT NULL REFERENCES machines(id) ON DELETE CASCADE,
+    type_id INTEGER NOT NULL REFERENCES maintenance_types(id) ON DELETE CASCADE,
+    next_due DATE NOT NULL,
+    last_done DATE,
+    PRIMARY KEY (machine_id, type_id)
+);
+
+-- Таблица актов ТО
+CREATE TABLE maintenance_acts (
+    id SERIAL PRIMARY KEY,
+    machine_id INTEGER NOT NULL REFERENCES machines(id) ON DELETE CASCADE,
+    type_id INTEGER NOT NULL REFERENCES maintenance_types(id) ON DELETE CASCADE,
+    date DATE NOT NULL,
+    engineer TEXT NOT NULL,
+    notes TEXT,
+    signed BOOLEAN DEFAULT FALSE
+);
+CREATE OR REPLACE FUNCTION update_next_due()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE maintenance_schedule
+    SET last_done = NEW.date,
+        next_due = NEW.date + (SELECT interval_days FROM maintenance_types WHERE id = NEW.type_id)
+    WHERE machine_id = NEW.machine_id AND type_id = NEW.type_id;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_update_next_due
+AFTER INSERT ON maintenance_acts
+FOR EACH ROW
+EXECUTE FUNCTION update_next_due();
+
+-- Данные для таблицы станков (5 записей)
+INSERT INTO machines (model, inv_number, commissioned_at) VALUES
+('Токарный станок CTX-500', 'INV-001', '2023-01-15'),
+('Фрезерный станок FV-580', 'INV-002', '2023-05-12'),
+('Пресс HP-300', 'INV-003', '2023-08-14'),
+('Шлифовальный станок 3Б151', 'INV-004', '2023-10-08'),
+('Сверлильный станок 2А554', 'INV-005', '2023-11-27');
+
+-- Данные для таблицы видов технического обслуживания (ваши типы, 10 записей)
+INSERT INTO maintenance_types (name, interval_days) VALUES
+('Ежедневное', 1),
+('Ежемесячное', 30),
+('Капитальное', 180),
+('Плановое', 90),
+('Калибровка', 60),
+('Промывка', 15),
+('Проверка', 7),
+('Ремонт', 120),
+('Обновление ПО', 45),
+('Диагностика', 10);
+
+-- Данные для таблицы графика ТО (6 записей с фокусом на сегодня/завтра/послезавтра)
+-- СЕГОДНЯ: 18.12.2025
+-- ЗАВТРА: 19.12.2025
+-- ПОСЛЕЗАВТРА: 20.12.2025
+
+INSERT INTO maintenance_schedule (machine_id, type_id, next_due, last_done) VALUES
+-- Просроченное (1 запись)
+(1, 2, '2025-12-15', '2024-11-15'),  -- Токарный CTX-500, Ежемесячное - ПРОСРОЧЕНО на 3 дня
+
+-- На СЕГОДНЯ 18.12.2025 (2 записи)
+(2, 4, '2025-12-18', '2025-12-17'),  -- Фрезерный FV-580, Плановое - СЕГОДНЯ
+(3, 10, '2025-12-18', '2025-12-08'), -- Пресс HP-300, Диагностика - СЕГОДНЯ
+
+-- На ЗАВТРА 19.12.2025 (2 записи)
+(4, 2, '2025-12-18', '2025-12-17'),  -- Шлифовальный 3Б151, Ежемесячное - ЗАВТРА
+(5, 5, '2025-12-19', '2025-10-20'),  -- Сверлильный 2А554, Калибровка - ЗАВТРА
+
+-- На ПОСЛЕЗАВТРА 20.12.2025 (1 запись)
+(1, 4, '2025-12-20', '2025-09-21');  -- Токарный CTX-500, Плановое - ПОСЛЕЗАВТРА
+
+-- Данные для таблицы актов ТО (6 записей)
+-- СЕГОДНЯ: 18.12.2025
+INSERT INTO maintenance_acts (machine_id, type_id, date, engineer, notes, signed) VALUES
+-- Выполненные сегодня 18.12.2025
+(2, 4, '2025-12-18', 'Иванов А.С.', 'Плановое ТО фрезерного станка выполнено', true),
+(3, 10, '2025-12-18', 'Петров В.И.', 'Диагностика пресса в норме', true),
+
+-- Выполненные в прошлом месяце
+(1, 2, '2025-11-15', 'Сидоров Д.М.', 'Ежемесячное обслуживание токарного', true),
+(4, 2, '2025-11-19', 'Иванов А.С.', 'Ежемесячное обслуживание шлифовального', true),
+
+-- Запланированные на завтра 19.12.2025 (еще не выполнены)
+(5, 5, '2025-12-19', 'Петров В.И.', 'Калибровка сверлильного запланирована', false),
+
+-- Просроченный ремонт (должен был быть выполнен 15.12.2025)
+(1, 8, '2025-12-15', 'Сидоров Д.М.', 'Требуется ремонт системы подачи СОЖ', false);
