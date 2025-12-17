@@ -1,0 +1,313 @@
+/* main.css */
+.button:hover {
+    -fx-background-color: #3a506b;
+    -fx-text-fill: white;
+}
+
+.button-selected {
+    -fx-background-color: #1abc9c !important;
+    -fx-text-fill: white !important;
+    -fx-font-weight: bold;
+}
+
+#btnMachines:hover,
+#btnActs:hover,
+#btnSchedule:hover,
+#btnTypes:hover,
+#btnPdf:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1) !important;
+    -fx-text-fill: white !important;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.notification-item {
+    -fx-padding: 10;
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+}
+
+.notification-item:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.notification-today {
+    -fx-border-color: #e74c3c;
+    -fx-border-width: 2;
+}
+
+.notification-tomorrow {
+    -fx-border-color: #f39c12;
+    -fx-border-width: 2;
+}
+
+.notification-after-tomorrow {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.notification-badge {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 11;
+    -fx-padding: 2 6;
+    -fx-background-radius: 10;
+}
+
+.notification-header {
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.notification-date {
+    -fx-font-size: 12;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+}
+
+.notification-machine {
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+}
+
+.notification-type {
+    -fx-font-size: 12;
+    -fx-text-fill: #95a5a6;
+}
+
+.details-pane {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+/* Дополнительные стили для таблиц */
+.modern-table {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 0;
+}
+
+.modern-table .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 0 0 1 0;
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #f8f9fa;
+    -fx-border-width: 0 0 1 0;
+}
+
+.modern-table .table-row-cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+
+.modern-table .table-row-cell:selected {
+    -fx-background-color: #d6eaf8;
+    -fx-text-fill: #2c3e50;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #ebf5fb;
+}
+
+/* Стили для DatePicker */
+.date-picker {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0 3 3 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Стили для меню */
+.menu-bar {
+    -fx-background-color: transparent;
+}
+
+.menu .label {
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+}
+
+.menu-item {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 13;
+}
+
+.menu-item:hover {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* Стили для кнопок в таблицах */
+.table-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 3;
+    -fx-padding: 5 15;
+    -fx-font-size: 13;
+}
+
+.table-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Стили для полей ввода */
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+    -fx-padding: 5 10;
+}
+
+.search-field:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* Стили для нижней панели */
+.bottom-panel {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 10 15;
+}
+
+.bottom-label {
+    -fx-text-fill: #bdc3c7;
+    -fx-font-size: 14;
+}
+/* Стили для формы редактирования */
+.modern-textfield {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+    -fx-padding: 8 12;
+    -fx-font-size: 14;
+}
+
+.modern-textfield:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.modern-textarea {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+    -fx-padding: 8 12;
+    -fx-font-size: 14;
+}
+
+.modern-textarea:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-background-radius: 5;
+    -fx-padding: 10 25;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #2471a3;
+}
+
+.btn-cancel {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-background-radius: 5;
+    -fx-padding: 10 25;
+    -fx-cursor: hand;
+}
+
+.btn-cancel:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+.btn-cancel:pressed {
+    -fx-background-color: #707b7c;
+}
+
+.error-field {
+    -fx-border-color: #e74c3c !important;
+    -fx-border-width: 2 !important;
+}
+
+.success-message {
+    -fx-text-fill: #27ae60;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.warning-message {
+    -fx-text-fill: #f39c12;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+/* Стили для ComboBox в формах */
+.modern-combo {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+    -fx-padding: 8 12;
+}
+
+.modern-combo .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0 3 3 0;
+}
+
+.modern-combo .arrow-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Стили для DatePicker в формах */
+.modern-datepicker {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+}
+
+.modern-datepicker .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0 3 3 0;
+}
+
+.modern-datepicker .arrow-button:hover {
+    -fx-background-color: #2980b9;
+}

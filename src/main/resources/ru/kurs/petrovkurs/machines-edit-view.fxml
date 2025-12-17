@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.kurs.petrovkurs.controller.MachinesEditViewController"
+            style="-fx-background-color: #f5f7fa; -fx-padding: 20;" stylesheets="styles_machines.css">
+
+    <top>
+        <VBox spacing="10" style="-fx-padding: 0 0 20 0;">
+            <Label text="Форма станка"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Заполните все поля для создания или редактирования станка"
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 20;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="170"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="430"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="40" prefHeight="40" />
+                <RowConstraints minHeight="40" prefHeight="40" />
+                <RowConstraints minHeight="40" prefHeight="40" />
+                <RowConstraints  />  <!-- Информационная панель -->
+                <RowConstraints minHeight="60" prefHeight="60" />  <!-- Поле для ошибок -->
+            </rowConstraints>
+
+            <!-- Строка 0: Модель -->
+            <Label text="Модель *" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="TextFieldModel" styleClass="modern-textfield"
+                       promptText="Введите модель станка"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <!-- Строка 1: Инвентарный номер -->
+            <Label text="Инвентарный номер *" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="TextFieldInvNumber" styleClass="modern-textfield"
+                       promptText="Введите инвентарный номер"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Строка 2: Дата ввода -->
+            <Label text="Дата ввода *" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="DatePickerCommissionedAt" styleClass="modern-datepicker"
+                        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <!-- Строка 3: Информационная панель -->
+            <VBox spacing="5" style="-fx-background-color: #e8f4f8; -fx-background-radius: 5; -fx-padding: 15; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-border-width: 1;"
+                  GridPane.rowIndex="3" GridPane.columnSpan="2"
+                  maxWidth="Infinity">  <!-- Добавьте это! -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="💡" style="-fx-font-size: 16px;"/>
+                    <Label text="Информация" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+                </HBox>
+                <Label text="Поля, помеченные звездочкой (*), обязательны для заполнения. После сохранения станок будет добавлен в общий список оборудования."
+                       style="-fx-text-fill: #34495e; -fx-font-size: 13px;"
+                       wrapText="true"
+                       maxWidth="Infinity"/>  <!-- Добавьте это! -->
+            </VBox>
+
+            <!-- Строка 4: Поле для ошибок -->
+            <Label fx:id="errorLabel" style="-fx-text-fill: #e74c3c; -fx-font-size: 12px; -fx-font-weight: normal;"
+                   visible="false" wrapText="true"
+                   GridPane.rowIndex="4" GridPane.columnSpan="2"
+                   maxWidth="Infinity">  <!-- Добавьте это! -->
+                <GridPane.margin>
+                    <Insets top="10"/>
+                </GridPane.margin>
+            </Label>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 20 0 0 0;">
+            <Button fx:id="BtnCancel" text="Отмена" styleClass="btn-cancel"
+                    onAction="#BtnCancelAction"/>
+            <Button fx:id="BtnSave" text="Сохранить" styleClass="btn-primary"
+                    onAction="#BtnSaveAction" defaultButton="true"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,369 @@
+/* Общий стиль для всего окна */
+.main-border {
+    -fx-background-color: #f0f4f8;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+}
+.button-selected {
+    -fx-background-color: #4CAF50; /* Зеленый или любой другой цвет */
+    -fx-text-fill: white;
+}
+/* Общие стили для панели */
+#detailsPane {
+    -fx-background-color: #ffffff; /* светлый фон, можно изменить */
+    -fx-padding: 15;
+    -fx-min-width: 320;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+}
+
+/* Стиль для кнопки закрытия */
+#detailsPane Button {
+    -fx-background-color: #ff5c5c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+    -fx-transition: all 0.3s ease;
+}
+
+#detailsPane Button:hover {
+    -fx-background-color: #ff1f1f;
+}
+
+/* Заголовок */
+#detailsPane Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 10 0 10 0;
+}
+/* Стиль для контейнера кнопки */
+#notificationButtonContainer {
+    -fx-position: relative;
+}
+
+/* Стиль для кнопки */
+.notification-button {
+    -fx-background-color: #007ACC; /* или ваш стиль */
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+}
+
+/* Стиль для бейджа счетчика */
+/* В файле CSS или в теге <styles> FXML */
+.notification-badge {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-alignment: center;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 3px 0 3px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+}
+/* В ваш файл styles.css добавьте */
+.calendar-day {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+.calendar-day:hover {
+    -fx-border-color: #333333;
+    -fx-border-width: 2;
+}
+
+.calendar-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+    -fx-padding: 10;
+}
+
+.calendar-weekend {
+    -fx-background-color: #f9f9f9;
+}
+/* ScrollPane */
+#detailsScroll {
+    -fx-background-color: transparent;
+    -fx-padding: 10 0 0 0;
+}
+/* Верхняя панель */
+.top-bar {
+    padding: 10;
+    background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 0 0 1px 0;
+}
+
+/* Меню */
+.menu-bar {
+    -fx-background-color: transparent;
+}
+
+/* Название фильтра */
+.label-date {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Центр */
+.center-box {
+    padding: 10;
+    background-color: #ffffff;
+    border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+/* Таблица */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Нижняя панель */
+.bottom-bar {
+    padding: 10;
+    background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* Кнопки */
+.button-primary {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Метки */
+.label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.label-info {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Дата-пикер */
+.date-picker {
+    -fx-background-radius: 4px;
+    -fx-border-color: #ccc;
+}
+/* Основные стили */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Кнопка Сохранить */
+.btn-primary {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.4), 5, 0, 0, 2);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #2573a7);
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.6), 8, 0, 0, 3);
+}
+
+.btn-primary:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2573a7, #21618c);
+}
+
+/* Кнопка Отмена */
+.btn-cancel {
+    -fx-background-color: #ecf0f1;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 5;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-cancel:hover {
+    -fx-background-color: #e0e6e8;
+    -fx-text-fill: #34495e;
+}
+
+.btn-cancel:pressed {
+    -fx-background-color: #d5dbdd;
+}
+
+/* Поля ввода */
+.modern-textfield {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+}
+
+.modern-textfield:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.3), 5, 0, 0, 1);
+}
+
+.modern-textarea {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-pref-height: 80;
+}
+
+.modern-textarea:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.3), 5, 0, 0, 1);
+}
+
+/* ComboBox */
+.modern-combo {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+}
+
+.modern-combo .arrow-button {
+    -fx-background-color: #ecf0f1;
+}
+
+.modern-combo .arrow {
+    -fx-background-color: #7f8c8d;
+}
+
+.modern-combo:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.modern-combo .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+}
+
+.modern-combo .list-cell {
+    -fx-padding: 10;
+    -fx-background-color: white;
+}
+
+.modern-combo .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.modern-combo .list-cell:filled:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* DatePicker */
+.modern-datepicker {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-font-size: 14px;
+}
+
+.modern-datepicker .arrow-button {
+    -fx-background-color: #ecf0f1;
+}
+
+.modern-datepicker .arrow {
+    -fx-background-color: #7f8c8d;
+}
+
+.modern-datepicker:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+.modern-datepicker .date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+}
+
+/* CheckBox */
+.modern-checkbox {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2c3e50;
+}
+
+.modern-checkbox .box {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+}
+
+.modern-checkbox:hover .box {
+    -fx-border-color: #3498db;
+}
+
+.modern-checkbox:selected .box {
+    -fx-background-color: #3498db;
+    -fx-border-color: #2980b9;
+}
+
+.modern-checkbox:selected .mark {
+    -fx-background-color: white;
+}
+
+/* Валидация ошибок */
+.error-field {
+    -fx-border-color: #e74c3c !important;
+    -fx-border-width: 2 !important;
+}
+
+.error-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 12px;
+}
+
+/* Иконки в labels (если нужно) */
+.label-with-icon {
+    -fx-graphic-text-gap: 10;
+}

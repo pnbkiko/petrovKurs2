@@ -1,0 +1,32 @@
+/* Стили для информационного текста */
+.info-text {
+    -fx-wrap-text: true;
+    -fx-max-width: Infinity;
+    -fx-text-fill: #34495e;
+    -fx-font-size: 13px;
+    -fx-alignment: top-left;
+    -fx-padding: 5 0 0 0;
+}
+
+/* Стили для информационной панели */
+.info-panel {
+    -fx-background-color: #e8f4f8;
+    -fx-background-radius: 5;
+    -fx-padding: 15;
+    -fx-border-color: #3498db;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-max-width: Infinity;
+}
+
+/* Стили для заголовка информации */
+.info-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2980b9;
+    -fx-font-size: 14px;
+}
+
+/* Стили для иконки информации */
+.info-icon {
+    -fx-font-size: 16px;
+}

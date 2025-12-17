@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Region?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.kurs.petrovkurs.controller.HelloController"
+            stylesheets="@main.css">
+
+    <left>
+        <!-- Основная панель меню -->
+        <VBox fx:id="menuBox" spacing="0" style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e); -fx-padding: 0;">
+
+            <!-- Логотип/Заголовок приложения -->
+            <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 20 10;">
+                <Label text="ТО Машин" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Разделитель -->
+            <Rectangle height="1" fill="#4a6572"/>
+
+            <!-- Кнопки меню с иконками -->
+            <VBox spacing="0" style="-fx-padding: 15 0;">
+                <!-- Станок -->
+                <Button fx:id="btnMachines" onAction="#handleMachines"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="⚙️" style="-fx-font-size: 16;"/>
+                            <Label text="Станки" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- Акт ТО -->
+                <Button fx:id="btnActs" onAction="#handleActs"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="📋" style="-fx-font-size: 16;"/>
+                            <Label text="Акты ТО" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- График ТО -->
+                <Button fx:id="btnSchedule" onAction="#handleSchedule"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="📊" style="-fx-font-size: 16;"/>
+                            <Label text="График ТО" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- Вид ТО -->
+                <Button fx:id="btnTypes" onAction="#handleTypes"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="🔧" style="-fx-font-size: 16;"/>
+                            <Label text="Виды ТО" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- Календарь ТО -->
+                <Button onAction="#openCalendarWindow"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="📅" style="-fx-font-size: 16;"/>
+                            <Label text="Календарь" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- PDF отчет -->
+                <Button fx:id="btnPdf" onAction="#btnPdfAction"
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 14; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-border-width: 0 0 1 0; -fx-border-color: #4a6572;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="📄" style="-fx-font-size: 16;"/>
+                            <Label text="PDF отчет" style="-fx-text-fill: #bdc3c7;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- Разделитель перед уведомлениями -->
+                <VBox spacing="5" style="-fx-padding: 20 0 10 0;">
+                    <Label text="УВЕДОМЛЕНИЯ" style="-fx-text-fill: #7f8c8d; -fx-font-size: 11; -fx-padding: 5 20; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <!-- Кнопка уведомлений с счетчиком -->
+                <StackPane style="-fx-padding: 0 20;">
+                    <Button fx:id="btnClose" onAction="#toggleDetailsPane"
+                            style="-fx-background-color: #3498db; -fx-background-radius: 5; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 15; -fx-alignment: CENTER_LEFT;">
+                        <graphic>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="🔔" style="-fx-font-size: 16;"/>
+                                <Label text="Уведомления" style="-fx-text-fill: white;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                    <!-- Счетчик уведомлений -->
+                    <Label fx:id="notificationCountLabel"
+                           style="-fx-background-color: #e74c3c;
+                                  -fx-text-fill: white;
+                                  -fx-font-weight: bold;
+                                  -fx-font-size: 12;
+                                  -fx-min-width: 24;
+                                  -fx-min-height: 24;
+                                  -fx-pref-width: 24;
+                                  -fx-pref-height: 24;
+                                  -fx-alignment: center;
+                                  -fx-background-radius: 12;
+                                  -fx-border-color: #ffffff;
+                                  -fx-border-width: 2;
+                                  -fx-border-radius: 12;"
+                           visible="false"
+                           StackPane.alignment="TOP_RIGHT"
+                           translateX="10"
+                           translateY="-10"/>
+                </StackPane>
+
+                <!-- Пространство внизу -->
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <!-- Информация о пользователе/версии -->
+                <VBox style="-fx-padding: 20 15 15 15; -fx-background-color: #1a252f;">
+                    <Label text="v1.0.0" style="-fx-text-fill: #7f8c8d; -fx-font-size: 11;"/>
+                    <Label text="© 2025 ТО Машин" style="-fx-text-fill: #7f8c8d; -fx-font-size: 11;"/>
+                </VBox>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentStack" style="-fx-background-color: #ecf0f1;"/>
+    </center>
+
+    <right>
+        <!-- Панель деталей/уведомлений -->
+        <VBox fx:id="detailsPane" styleClass="details-pane" visible="false" managed="false"
+              style="-fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-width: 0 0 0 1;">
+
+            <!-- Заголовок панели уведомлений -->
+            <HBox style="-fx-background-color: #3498db; -fx-padding: 15; -fx-spacing: 10;" alignment="CENTER_LEFT">
+                <Label text="🔔" style="-fx-font-size: 18;"/>
+                <Label text="Предстоящие ТО" style="-fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="✕" onAction="#hideDetailsPane"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 0 0 0 10;"/>
+            </HBox>
+
+            <!-- Контент уведомлений -->
+            <ScrollPane fx:id="detailsScroll"
+                        style="-fx-background: transparent; -fx-background-color: transparent; -fx-padding: 15;"
+                        fitToWidth="true">
+                <VBox style="-fx-spacing: 10;"/>
+            </ScrollPane>
+
+            <!-- Нижняя часть панели -->
+            <VBox style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+                <Label text="Всего уведомлений:" style="-fx-text-fill: #6c757d; -fx-font-size: 12;"/>
+                <Label fx:id="totalNotificationsLabel" text="0" style="-fx-text-fill: #2c3e50; -fx-font-size: 24; -fx-font-weight: bold;"/>
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>

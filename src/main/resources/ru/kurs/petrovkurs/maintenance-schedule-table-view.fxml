@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<BorderPane maxWidth="Infinity" maxHeight="Infinity" prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@main.css" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.kurs.petrovkurs.controller.MaintenanceScheduleTableViewController">
+
+    <style>
+        <String fx:value="-fx-background-color: #ecf0f1;"/>
+    </style>
+
+    <top>
+        <!-- Верхняя панель -->
+        <HBox style="-fx-background-color: #2c3e50; -fx-padding: 10 15;" alignment="CENTER">
+            <children>
+                <!-- Меню -->
+                <MenuBar style="-fx-background-color: transparent;">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Правка"
+                              style="-fx-text-fill: white; -fx-font-size: 14;">
+                            <items>
+                                <MenuItem fx:id="MenuItemAdd" mnemonicParsing="false"
+                                          onAction="#MenuItemAddAction" text="Добавить"
+                                          style="-fx-text-fill: #2c3e50;"/>
+                                <MenuItem fx:id="MenuItemDelete" mnemonicParsing="false"
+                                          onAction="#MenuItemDeleteAction" text="Удалить"
+                                          style="-fx-text-fill: #2c3e50;"/>
+                            </items>
+                        </Menu>
+
+                    </menus>
+                </MenuBar>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Заголовок -->
+                <Label text="График технического обслуживания"
+                       style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Информация о дате -->
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Label fx:id="LabelDate" text="Дата"
+                           style="-fx-text-fill: #bdc3c7; -fx-font-size: 14;"/>
+                </HBox>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <!-- Основной контент -->
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <!-- Панель фильтрации -->
+            <HBox spacing="10" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5;">
+                <Label text="📅 Фильтр по дате:" style="-fx-font-size: 14; -fx-text-fill: #2c3e50;"/>
+                <DatePicker fx:id="DatePickerFilter" promptText="Выберите дату последнего ТО"
+                            style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-pref-width: 220;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Сбросить фильтр" onAction="#clearFilter"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 3;"/>
+            </HBox>
+
+            <!-- Таблица графика ТО -->
+            <VBox spacing="5" VBox.vgrow="ALWAYS">
+                <Label text="График технического обслуживания:"
+                       style="-fx-text-fill: #2c3e50; -fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="TableViewMaintenanceSchedule" styleClass="modern-table">
+                    <columns>
+                        <TableColumn fx:id="TableColumnMachines" text="Станок" prefWidth="180">
+                            <style>
+                                <String fx:value="-fx-alignment: CENTER_LEFT; -fx-font-size: 13;"/>
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="TableColumnTypes" text="Вид ТО" prefWidth="150">
+                            <style>
+                                <String fx:value="-fx-alignment: CENTER_LEFT; -fx-font-size: 13;"/>
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="TableColumnNextDue" text="Следующее ТО" prefWidth="150">
+                            <style>
+                                <String fx:value="-fx-alignment: CENTER; -fx-font-size: 13;"/>
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="TableColumnLastDone" text="Последнее ТО" prefWidth="150">
+                            <style>
+                                <String fx:value="-fx-alignment: CENTER; -fx-font-size: 13;"/>
+                            </style>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Легенда цветов -->
+            <HBox spacing="15" alignment="CENTER"
+                  style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 5;">
+                <Label text="Легенда:" style="-fx-text-fill: #2c3e50; -fx-font-weight: bold; -fx-font-size: 13;"/>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #ff4d4d; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Просрочено" style="-fx-text-fill: #2c3e50; -fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #ffff66; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Сегодня" style="-fx-text-fill: #2c3e50; -fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #66ffff; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Завтра" style="-fx-text-fill: #2c3e50; -fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #99ff99; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Послезавтра" style="-fx-text-fill: #2c3e50; -fx-font-size: 12;"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <!-- Нижняя панель с информацией -->
+        <HBox style="-fx-background-color: #2c3e50; -fx-padding: 10 15;" alignment="CENTER">
+            <children>
+                <Label fx:id="LabelInfo" text="Информация о записях"
+                       style="-fx-text-fill: #bdc3c7; -fx-font-size: 14;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="📊 График ТО"
+                       style="-fx-text-fill: #3498db; -fx-font-size: 14; -fx-font-weight: bold;"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

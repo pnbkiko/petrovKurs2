@@ -1,0 +1,36 @@
+/* Стили для ComboBox */
+.modern-combo {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-font-size: 14px;
+}
+
+.modern-combo .arrow-button {
+    -fx-background-color: #f8f9fa;
+}
+
+.modern-combo .arrow {
+    -fx-background-color: #6c757d;
+}
+
+.modern-combo:focused {
+    -fx-border-color: #80bdff;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.25), 5, 0, 0, 0);
+}
+
+.modern-combo .list-cell {
+    -fx-padding: 8 12;
+    -fx-background-color: white;
+}
+
+.modern-combo .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.modern-combo .list-cell:filled:selected {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
